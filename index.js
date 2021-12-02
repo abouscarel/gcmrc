@@ -1,12 +1,7 @@
 const inquirer = require('inquirer');
 const shell = require('shelljs');
 
-const start = async () => {
-  // Find Jira Code
-  if (!shell.which('git')) {
-    shell.echo('Sorry, this script requires git');
-    shell.exit(1);
-  }
+const getJiraCode = async () => {
   const branchName = shell.exec("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'", {silent: true}).stdout
   let splittedBranchName = branchName.split('/')
   if (splittedBranchName.length < 2) {
@@ -15,8 +10,6 @@ const start = async () => {
   }
   splittedBranchName = splittedBranchName[splittedBranchName.length - 1].split('-')
   let jiraCode = `${splittedBranchName[0]}-${splittedBranchName[1]}`
-
-
   const prompt = inquirer.createPromptModule();
   let answer = await prompt({
     type: 'confirm',
@@ -37,7 +30,10 @@ const start = async () => {
     }
     jiraCode = jiraCodeAnswer.jiraCode
   }
+  return jiraCode
+}
 
+const getSection = async () => {
   let section = 'N/C'
   let sectionAnswer = await prompt({
     type: 'input',
@@ -47,8 +43,10 @@ const start = async () => {
   if (sectionAnswer.section) {
     section = sectionAnswer.section
   }
-  
+  return section
+}
 
+const getCommitMessage = async () => {
   let commitMessage = null
   let commitMessageAnswer = await prompt({
     type: 'input',
@@ -61,10 +59,20 @@ const start = async () => {
     console.log('Message de commit incorrect.')
     process.exit()
   }
+  return commitMessage
+}
 
-
+const start = async () => {
+  if (!shell.which('git')) {
+    shell.echo('Sorry, this script requires git');
+    shell.exit(1);
+  }
+  
+  const jiraCode = await getJiraCode()
+  const section = await getSection()
+  const commitMessage = await getSection()
+  
   console.log('\ncommit message :', `${jiraCode} - ${section} - ${commitMessage}`)
-
 }
 
 start()
