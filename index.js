@@ -12,7 +12,6 @@ const getJiraCode = async (prompt) => {
   }
   splittedBranchName = splittedBranchName[splittedBranchName.length - 1].split('-')
   let jiraCode = `${splittedBranchName[0]}-${splittedBranchName[1]}`
-  const prompt = inquirer.createPromptModule();
   let answer = await prompt({
     type: 'confirm',
     name: 'item',
@@ -36,7 +35,6 @@ const getJiraCode = async (prompt) => {
 }
 
 const getSection = async (prompt) => {
-  const prompt = inquirer.createPromptModule();
   let section = 'N/C'
   let sectionAnswer = await prompt({
     type: 'input',
