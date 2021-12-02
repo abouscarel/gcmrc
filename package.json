@@ -1,0 +1,17 @@
+{
+  "name": "gcamrc",
+  "version": "1.0.0",
+  "description": "Radio Canada 'Git commit -am' command formater ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonin Bouscarel <antonin.bouscarel.pro@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^6.2.1",
+    "chalk": "^5.0.0",
+    "inquirer": "^8.2.0",
+    "shelljs": "^0.8.4"
+  }
+}
