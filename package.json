@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "gcmrc": "index.js"
+  },
   "author": "Antonin Bouscarel <antonin.bouscarel.pro@gmail.com>",
   "license": "ISC",
   "dependencies": {
