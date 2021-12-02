@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const shell = require('shelljs');
 
-const getJiraCode = async () => {
+const getJiraCode = async (prompt) => {
   const branchName = shell.exec("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'", {silent: true}).stdout
   let splittedBranchName = branchName.split('/')
   if (splittedBranchName.length < 2) {
@@ -33,7 +33,7 @@ const getJiraCode = async () => {
   return jiraCode
 }
 
-const getSection = async () => {
+const getSection = async (prompt) => {
   const prompt = inquirer.createPromptModule();
   let section = 'N/C'
   let sectionAnswer = await prompt({
@@ -47,8 +47,8 @@ const getSection = async () => {
   return section
 }
 
-const getCommitMessage = async () => {
-  const prompt = inquirer.createPromptModule();
+const getCommitMessage = async (prompt) => {
+  
   let commitMessage = null
   let commitMessageAnswer = await prompt({
     type: 'input',
@@ -71,22 +71,9 @@ const start = async () => {
     shell.exit(1);
   }
   
-  const jiraCode = await getJiraCode()
-  const section = await getSection()
-  const commitMessage = await getCommitMessage()
-
-  // let answer = await prompt({
-  //   type: 'list',
-  //   message: 'Selectionnez une commande',
-  //   name: 'list',
-  //   choices: [
-  //     { name: 'npm', value: 'cmd_1' },
-  //     { name: 'yarn', value: 'cmd_2' },
-  //   ],
-  // });
-  // console.log('Answer:', answer);
-  
-  //console.log('\ncommit message :', `${jiraCode} - ${section} - ${commitMessage}`)
+  const jiraCode = await getJiraCode(prompt)
+  const section = await getSection(prompt)
+  const commitMessage = await getCommitMessage(prompt)
 
   if (jiraCode && section && commitMessage) {
     shell.exec(`git commit -m "${jiraCode} - ${section} - ${commitMessage}"`)
