@@ -1,7 +1,7 @@
 {
-  "name": "gcamrc",
+  "name": "gcmrc",
   "version": "1.0.0",
-  "description": "Radio Canada 'Git commit -am' command formater ",
+  "description": "'Git commit -m' command formater for Radio Canada",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
