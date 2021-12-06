@@ -1,8 +1,8 @@
  <!-- PROJECT LOGO -->
 <p align="center">
-    <h1 align="center">
-     GCM RC
-    </h1>
+  <h1 align="center" style="margin-bottom: 16px">
+    GCM RC
+  </h1>
   <p align="center">
     Commit message formatter for Radio Canada
     <br />
@@ -17,7 +17,6 @@
     <img src="https://img.shields.io/npm/v/gcmrc" alt="npm">
     <img alt="npm" src="https://img.shields.io/npm/dt/gcmrc">
   </p>
-
 </p>
 
 <!-- TABLE OF CONTENTS -->
