@@ -4,7 +4,7 @@
     GCM RC
   </h1>
   <p align="center">
-    Commit message formatter for Radio Canada
+    Commit message formatter
     <br />
     <a href="https://github.com/abouscarel/gcmrc"><strong>Explore the docs »</strong></a>
     <br />

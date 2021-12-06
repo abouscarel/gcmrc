@@ -1,7 +1,7 @@
 {
   "name": "gcmrc",
-  "version": "1.0.5",
-  "description": "'Git commit -m' command formater for Radio Canada",
+  "version": "1.0.6",
+  "description": "'Git commit -m' command formater",
   "main": "index.js",
   "repository": {
     "type": "git",
