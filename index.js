@@ -39,7 +39,7 @@ const getSection = async (prompt) => {
   let sectionAnswer = await prompt({
     type: 'input',
     name: 'section',
-    message: `Quel est la section impacté ?`,
+    message: `Quel est la section impactée ?`,
   })
   if (sectionAnswer.section) {
     section = sectionAnswer.section
